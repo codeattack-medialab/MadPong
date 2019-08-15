@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/game.gd" type="Script" id=1]
 [ext_resource path="res://textures/game_background.png" type="Texture" id=2]
 [ext_resource path="res://textures/field.png" type="Texture" id=3]
 [ext_resource path="res://scenes/racket.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/ball.gd" type="Script" id=5]
-[ext_resource path="res://textures/ball.png" type="Texture" id=6]
-[ext_resource path="res://textures/frame.png" type="Texture" id=7]
-[ext_resource path="res://fonts/big_score_numbers.tres" type="DynamicFont" id=8]
-[ext_resource path="res://fonts/game_text.tres" type="DynamicFont" id=9]
-[ext_resource path="res://textures/mlp_facade.png" type="Texture" id=10]
+[ext_resource path="res://scenes/ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/frame.png" type="Texture" id=6]
+[ext_resource path="res://fonts/big_score_numbers.tres" type="DynamicFont" id=7]
+[ext_resource path="res://fonts/game_text.tres" type="DynamicFont" id=8]
+[ext_resource path="res://textures/mlp_facade.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Color"
@@ -28,8 +27,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.713726, 0.788235, 0.0666667, 1 ), Color( 1, 0.427451, 0.294118, 1 ), Color( 0.294118, 0.588235, 1, 1 ), Color( 0.109804, 0.737255, 0.25098, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2, 2 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11, 53 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -65,27 +64,37 @@ position = Vector2( 35, 41 )
 [node name="BottomRight" type="Position2D" parent="Limits"]
 position = Vector2( 158, 147 )
 
+[node name="WallLeft" type="StaticBody2D" parent="Limits"]
+position = Vector2( 24, 94 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/WallLeft"]
+visible = false
+shape = SubResource( 3 )
+
+[node name="WallRight" type="StaticBody2D" parent="Limits"]
+position = Vector2( 169, 94 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/WallRight"]
+visible = false
+shape = SubResource( 3 )
+
 [node name="Racket1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 74, 45 )
 
 [node name="Racket2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 115, 143 )
 
-[node name="Ball" type="KinematicBody2D" parent="."]
-position = Vector2( 75, 71 )
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Ball"]
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource( 2 )
+[node name="Ball" parent="." instance=ExtResource( 5 )]
+position = Vector2( 73, 61 )
 
 [node name="Frame" type="Sprite" parent="."]
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 centered = false
 __meta__ = {
 "_edit_lock_": true
@@ -96,7 +105,7 @@ margin_left = 108.113
 margin_top = 8.93991
 margin_right = 123.113
 margin_bottom = 35.9399
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 7 )
 text = "0"
 
 [node name="Score2" type="Label" parent="."]
@@ -104,7 +113,7 @@ margin_left = 72.7639
 margin_top = 8.65382
 margin_right = 87.7639
 margin_bottom = 35.6538
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 7 )
 text = "2"
 
 [node name="Label" type="Label" parent="."]
@@ -112,10 +121,10 @@ margin_left = 61.7607
 margin_top = 1.49931
 margin_right = 130.761
 margin_bottom = 13.4993
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 8 )
 text = "ATARIMAD"
 align = 1
 
 [node name="Facade" type="Sprite" parent="."]
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 centered = false
