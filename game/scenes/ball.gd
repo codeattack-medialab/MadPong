@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed := 40
+var speed := 50
 var direction := Vector2()
 
 var limit_right := 0
