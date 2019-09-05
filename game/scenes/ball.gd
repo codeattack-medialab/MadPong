@@ -19,7 +19,6 @@ func start():
 
 func _physics_process(delta: float):
 	var velocity: Vector2 = direction * speed
-
 	var collision := move_and_collide(velocity * delta)
 	if collision:
 		if ((collision.collider.name.begins_with("Racket")) and (collision.normal.x == 0)):  #Para que no colisione con los laterales de la raqueta y se buguee
@@ -31,5 +30,7 @@ func _physics_process(delta: float):
 			angle=lerp(-PI/6, PI/6,relative_pos.x/racket_size)
 			change_angle = 1 if collision.collider.name.ends_with("2") else -1
 			direction = direction.rotated(change_angle*angle).normalized()
+		elif ((collision.collider.name.begins_with("Racket")) and (collision.normal.x != 0)):  
+			pass
 		elif collision.collider.name.begins_with("Wall"):
 			direction = direction.bounce(Vector2.RIGHT)

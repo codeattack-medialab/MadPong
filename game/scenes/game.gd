@@ -11,3 +11,6 @@ func _ready():
 
 	$Racket1.set_field_limits($Limits/TopLeft.position.x, $Limits/BottomRight.position.x)
 	$Racket2.set_field_limits($Limits/TopLeft.position.x, $Limits/BottomRight.position.x)
+
+#		$"/root/Game".score1+=1
+#		$"/root/Game/Score1".text= str($"/root/Game".score1)

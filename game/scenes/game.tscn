@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/game.gd" type="Script" id=1]
 [ext_resource path="res://textures/game_background.png" type="Texture" id=2]
@@ -29,6 +29,9 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11, 53 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 65.0862, 2.69986 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -92,6 +95,7 @@ position = Vector2( 115, 143 )
 
 [node name="Ball" parent="." instance=ExtResource( 5 )]
 position = Vector2( 73, 61 )
+collision_layer = 3
 
 [node name="Frame" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -128,3 +132,20 @@ align = 1
 [node name="Facade" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 centered = false
+
+[node name="Goal2" type="Area2D" parent="."]
+position = Vector2( 95.513, 145 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2"]
+shape = SubResource( 3 )
+
+[node name="Goal1" type="Area2D" parent="."]
+position = Vector2( 50.513, 42 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
+position = Vector2( 46, 0 )
+shape = SubResource( 3 )
