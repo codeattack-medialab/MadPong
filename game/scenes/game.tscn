@@ -36,6 +36,9 @@ extents = Vector2( 65.0862, 2.69986 )
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Background" type="Sprite" parent="."]
 editor/display_folded = true
 texture = ExtResource( 2 )
@@ -94,8 +97,7 @@ position = Vector2( 74, 45 )
 position = Vector2( 115, 143 )
 
 [node name="Ball" parent="." instance=ExtResource( 5 )]
-position = Vector2( 73, 61 )
-collision_layer = 3
+position = Vector2( 96, 94 )
 
 [node name="Frame" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -135,17 +137,22 @@ centered = false
 
 [node name="Goal2" type="Area2D" parent="."]
 position = Vector2( 95.513, 145 )
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="Goal1" type="Area2D" parent="."]
 position = Vector2( 50.513, 42 )
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
+visible = false
 position = Vector2( 46, 0 )
 shape = SubResource( 3 )
+[connection signal="timeout" from="Timer" to="Ball" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Goal2" to="Ball" method="_on_body_entered" binds= [ 2 ]]
+[connection signal="body_entered" from="Goal1" to="Ball" method="_on_body_entered" binds= [ 1 ]]

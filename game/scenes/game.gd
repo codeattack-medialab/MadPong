@@ -14,3 +14,6 @@ func _ready():
 
 #		$"/root/Game".score1+=1
 #		$"/root/Game/Score1".text= str($"/root/Game".score1)
+
+
+

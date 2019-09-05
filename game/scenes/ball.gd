@@ -11,6 +11,9 @@ var racket_size : float
 
 var angle : float
 var change_angle
+
+var initial_pos := Vector2(96,94)
+
 func _ready():
 	start()
 
@@ -34,3 +37,21 @@ func _physics_process(delta: float):
 			pass
 		elif collision.collider.name.begins_with("Wall"):
 			direction = direction.bounce(Vector2.RIGHT)
+
+
+
+func _on_Timer_timeout():
+	set_physics_process(true)
+
+
+func _on_body_entered(body, extra_arg_0):
+	set_physics_process(false)
+	match extra_arg_0:
+		1:
+			$"/root/Game".score1+=1
+			$"/root/Game/Score1".text= str($"/root/Game".score1)
+		2:
+			$"/root/Game".score2+=1
+			$"/root/Game/Score2".text= str($"/root/Game".score2)
+	position = initial_pos
+	$"/root/Game/Timer".start()
