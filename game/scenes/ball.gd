@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-var speed := 50
+var init_speed := 50
+var speed
+export var aceleration := 0.05
 var direction := Vector2()
 
 var limit_right := 0
@@ -19,9 +21,12 @@ func _ready():
 
 func start():
 	direction = Vector2.DOWN.rotated(rand_range(-PI/3, PI/3))
+	speed = init_speed
 
 func _physics_process(delta: float):
-	var velocity: Vector2 = direction * speed
+	
+	var velocity: Vector2 = direction * speed 
+	speed += aceleration
 	var collision := move_and_collide(velocity * delta)
 	if collision:
 		if ((collision.collider.name.begins_with("Racket")) and (collision.normal.x == 0)):  #Para que no colisione con los laterales de la raqueta y se buguee
@@ -41,6 +46,7 @@ func _physics_process(delta: float):
 
 
 func _on_Timer_timeout():
+	speed = init_speed
 	set_physics_process(true)
 
 
