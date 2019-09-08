@@ -25,11 +25,10 @@ Global="*res://global.gd"
 
 [display]
 
-window/size/width=192
-window/size/height=157
-window/size/fullscreen=true
-window/size/test_width=768
-window/size/test_height=628
+window/size/width=232
+window/size/height=197
+window/size/test_width=928
+window/size/test_height=788
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -84,4 +83,5 @@ p2_right={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
