@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://textures/racket.png" type="Texture" id=1]
-
-[node name="Racket1" type="Sprite"]
-position = Vector2( 74, 45 )
-texture = ExtResource( 1 )
