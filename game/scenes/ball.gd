@@ -5,9 +5,6 @@ var speed
 export var aceleration := 0.05
 var direction := Vector2()
 
-var limit_right := 0
-var limit_left := 0
-
 var relative_pos : Vector2
 var racket_size : float
 
@@ -16,12 +13,15 @@ var change_angle
 
 var initial_pos := Vector2(96,94)
 
+
 func _ready():
 	start()
+
 
 func start():
 	direction = Vector2.DOWN.rotated(rand_range(-PI/3, PI/3))
 	speed = init_speed
+
 
 func _physics_process(delta: float):
 	
@@ -42,7 +42,6 @@ func _physics_process(delta: float):
 			pass
 		elif collision.collider.name.begins_with("Wall"):
 			direction = direction.bounce(Vector2.RIGHT)
-
 
 
 func _on_Timer_timeout():
