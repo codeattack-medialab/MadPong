@@ -21,6 +21,8 @@ func _ready():
 		position = Vector2(40, 40)
 	if medialab_facade == "FullScreen":
 		OS.window_fullscreen = true
-	if medialab_facade == "No":
+	elif medialab_facade == "Window":
+		OS.window_position = Vector2(0, 0)
+	elif medialab_facade == "No":
 		OS.window_fullscreen = true
 		position = Vector2(20, 20)
