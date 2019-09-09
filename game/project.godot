@@ -27,8 +27,8 @@ Global="*res://global.gd"
 
 window/size/width=232
 window/size/height=197
-window/size/test_width=928
-window/size/test_height=788
+window/size/borderless=true
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
