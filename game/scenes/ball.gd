@@ -39,13 +39,13 @@ func _physics_process(delta: float):
 			change_angle = 1 if collision.collider.name.ends_with("2") else -1
 			direction = direction.rotated(change_angle*angle).normalized()
 		elif ((collision.collider.name.begins_with("Racket")) and (collision.normal.x != 0)):  
-			pass
+			direction = direction.bounce(Vector2.RIGHT)
 		elif collision.collider.name.begins_with("Wall"):
 			direction = direction.bounce(Vector2.RIGHT)
 
 
 func _on_Timer_timeout():
-	speed = init_speed
+	start()
 	set_physics_process(true)
 
 
