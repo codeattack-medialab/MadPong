@@ -19,10 +19,11 @@ func _ready():
 
 
 func start():
+	var AUX= sign(randi() %2 - 0.5)
 	if direction:
 		direction = Vector2(0,sign(direction.y)).rotated(rand_range(-PI/3, PI/3))
 	else:
-		direction = Vector2(0,randi()%2 -1).normalized().rotated(rand_range(-PI/3, PI/3))
+		direction = Vector2(0,sign(randi()%2 -0.5)).normalized().rotated(rand_range(-PI/3, PI/3))
 	speed = init_speed
 
 
