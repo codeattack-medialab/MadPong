@@ -136,6 +136,7 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="Goal2" type="Area2D" parent="."]
+visible = false
 position = Vector2( 96, 150 )
 collision_layer = 2
 collision_mask = 2
@@ -144,7 +145,6 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2"]
-visible = false
 shape = SubResource( 3 )
 
 [node name="Goal1" type="Area2D" parent="."]
@@ -159,5 +159,5 @@ __meta__ = {
 visible = false
 shape = SubResource( 3 )
 [connection signal="timeout" from="Timer" to="Ball" method="_on_Timer_timeout"]
-[connection signal="body_entered" from="Goal2" to="Ball" method="_on_body_entered" binds= [ 2 ]]
-[connection signal="body_entered" from="Goal1" to="Ball" method="_on_body_entered" binds= [ 1 ]]
+[connection signal="body_entered" from="Goal2" to="." method="_on_body_entered" binds= [ 2 ]]
+[connection signal="body_entered" from="Goal1" to="." method="_on_body_entered" binds= [ 1 ]]

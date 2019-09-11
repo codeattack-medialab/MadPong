@@ -26,3 +26,17 @@ func _ready():
 	elif medialab_facade == "No":
 		OS.window_fullscreen = true
 		position = Vector2(20, 20)
+
+
+func _on_body_entered(body,extra_arg_0):
+	$Ball.set_physics_process(false)
+	match extra_arg_0:
+		1:
+			score1+=1
+			$Score1.text= str(score1)
+		2:
+			score2+=1
+			$Score2.text= str(score2)
+	$Ball.position = $Ball.initial_pos
+	$Timer.start()
+
