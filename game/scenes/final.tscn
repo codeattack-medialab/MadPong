@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://fonts/game_text.tres" type="DynamicFont" id=1]
+
+[node name="Container" type="VBoxContainer"]
+margin_right = 97.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="."]
+light_mask = 4097
+margin_right = 97.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 1 )
+text = "JIBIRI 
+JIBIRI
+"
