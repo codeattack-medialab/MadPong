@@ -1,10 +1,12 @@
 extends Node2D
 
 export(String, "No", "FullScreen", "Window") var medialab_facade := "No"
-export var max_score:= 1
+export var max_score:= 3
 var score1 := 0
 var score2 := 0
 var finished := false
+
+var final_box
 
 func _enter_tree():
 	if medialab_facade == "FullScreen" or medialab_facade == "Window":
@@ -53,7 +55,7 @@ func check_finish() -> bool:
 		return false
 		
 func finish_game():
-	var  final_box = preload("res://scenes/final.tscn").instance()
+	final_box = preload("res://scenes/final.tscn").instance()
 	self.add_child(final_box)
 	final_box.rect_global_position=Vector2(100,100)
 	$FinalTimer.start()
@@ -65,7 +67,7 @@ func restart():
 	score2 = 0
 	$Score2.text= str(score2)
 	$Timer.start()
-#	self.remove_child("final_box")
+	final_box.queue_free()
 	
 func _final_Timer_timeout():
 	finished=true
