@@ -17,7 +17,6 @@ func _enter_tree():
 	elif medialab_facade == "Window":
 		OS.window_position = Vector2(40, 40)
 	elif medialab_facade == "No":
-		#position = Vector2(20, 20)
 		OS.window_fullscreen = true
 
 

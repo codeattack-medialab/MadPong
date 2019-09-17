@@ -21,4 +21,5 @@ func _physics_process(delta: float):
 
 	if new_position != position.x:
 		new_position = clamp(new_position, limit_left, limit_right)
-		position.x = new_position
+		var movement = new_position - position.x
+		move_and_collide(Vector2(movement, 0))
