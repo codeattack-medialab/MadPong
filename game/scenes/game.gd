@@ -9,17 +9,16 @@ var finished := false
 var final_box
 
 func _enter_tree():
-	if medialab_facade == "FullScreen" or medialab_facade == "Window":
+	if medialab_facade == "FullScreen":
 		var viewport_size = Vector2(192+40, 157+40)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED, SceneTree.STRETCH_ASPECT_KEEP, viewport_size, 1)
 		position = Vector2(40, 40)
-	if medialab_facade == "FullScreen":
 		OS.window_fullscreen = true
 	elif medialab_facade == "Window":
-		OS.window_position = Vector2(0, 0)
+		OS.window_position = Vector2(40, 40)
 	elif medialab_facade == "No":
+		#position = Vector2(20, 20)
 		OS.window_fullscreen = true
-		position = Vector2(20, 20)
 
 
 func _ready():

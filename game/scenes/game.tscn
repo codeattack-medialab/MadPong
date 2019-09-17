@@ -35,7 +35,6 @@ extents = Vector2( 65.0862, 2.69986 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
-medialab_facade = "Window"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
