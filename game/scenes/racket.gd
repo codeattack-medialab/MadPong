@@ -8,7 +8,10 @@ var speed = 100
 
 var new_position
 
-var sense = 0
+var cadena = 0
+var cantidad = 0#renombrar por otra cosa que sea más claro
+var command_joystick
+var state = 0
 
 func set_field_limits(field_left: int, field_right: int):
 	var half_racket_length: int = $CollisionShape2D.shape.extents.x
@@ -17,21 +20,38 @@ func set_field_limits(field_left: int, field_right: int):
 
 func _physics_process(delta: float):
 	new_position = position.x
+	
+	new_position += state * speed * delta
 	if Input.is_action_pressed("p%d_left" % player):
 		new_position -= speed * delta
 	if Input.is_action_pressed("p%d_right" % player):
 		new_position += speed * delta
-	if sense != 0:
-		new_position  += speed *speed * delta
+		
+	update_state()
+	
 	if new_position != position.x:
 		new_position = clamp(new_position, limit_left, limit_right)
 		var movement = new_position - position.x
 		move_and_collide(Vector2(movement, 0))
-		sense = 0
+	
 
 
 func _on_Game_joystick(value):
-	if value.begins_with("Left-"):
-		sense= -1
+	cadena = value.split("-")
+	cantidad = float(cadena[1])
+	command_joystick = cadena[0]
+#	if value.begins_with("Left-"):
+#		sense= -1
+#	else:
+#		sense= +1
+
+func update_state():
+	if ((cantidad>0)):
+		if(command_joystick =="Left"):
+			state = -1
+		elif(command_joystick == "Right"):
+			state= 1
+		else:
+			state= 0
 	else:
-		sense= +1
+		state = 0
