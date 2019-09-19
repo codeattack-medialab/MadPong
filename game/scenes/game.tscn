@@ -92,9 +92,11 @@ shape = SubResource( 2 )
 
 [node name="Racket1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 74, 45 )
+motion/sync_to_physics = false
 
 [node name="Racket2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 115, 143 )
+motion/sync_to_physics = false
 
 [node name="Ball" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 94 )
