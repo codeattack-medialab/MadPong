@@ -164,6 +164,7 @@ shape = SubResource( 3 )
 
 [node name="FinalTimer" type="Timer" parent="."]
 one_shot = true
+[connection signal="joystick" from="." to="Racket1" method="_on_Game_joystick"]
 [connection signal="timeout" from="Timer" to="Ball" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Goal2" to="." method="_on_body_entered" binds= [ 2 ]]
 [connection signal="body_entered" from="Goal1" to="." method="_on_body_entered" binds= [ 1 ]]
