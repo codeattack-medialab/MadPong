@@ -8,6 +8,11 @@ var finished := false
 
 var final_box
 
+var udp
+var pid
+var dest_ip
+var dest_port
+
 func _enter_tree():
 	if medialab_facade == "FullScreen":
 		var viewport_size = Vector2(192+40, 157+40)
@@ -29,6 +34,14 @@ func _ready():
 	$Racket1.set_field_limits($Limits/TopLeft.position.x, $Limits/BottomRight.position.x)
 	$Racket2.set_field_limits($Limits/TopLeft.position.x, $Limits/BottomRight.position.x)
 	
+	#UDP
+	udp = PacketPeerUDP.new()
+	var err = udp.listen(33333, "127.0.0.1")
+	if err != OK:
+		print("error al conectarse al puerto 33333")
+	
+		
+		
 	
 
 func _on_body_entered(body,extra_arg_0):
@@ -71,6 +84,10 @@ func _final_Timer_timeout():
 	finished=true
 	
 func _process(delta):
+	while udp.get_available_packet_count() > 0:
+		var packet = udp.get_packet().get_string_from_ascii()
+		if packet:
+			print("OK!")
 	
 	if (finished and (Input.is_action_just_pressed("p1_left") or Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p1_right") or Input.is_action_just_pressed("p2_right"))):
 		restart()
