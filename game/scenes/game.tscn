@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/ball.tscn" type="PackedScene" id=5]
 [ext_resource path="res://textures/frame.png" type="Texture" id=6]
 [ext_resource path="res://fonts/big_score_numbers.tres" type="DynamicFont" id=7]
-[ext_resource path="res://fonts/game_text.tres" type="DynamicFont" id=8]
+[ext_resource path="res://textures/logo_small.png" type="Texture" id=8]
 [ext_resource path="res://textures/mlp_facade.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
@@ -131,14 +131,9 @@ margin_bottom = 35.6538
 custom_fonts/font = ExtResource( 7 )
 text = "2"
 
-[node name="Label" type="Label" parent="."]
-margin_left = 61.7607
-margin_top = 1.49931
-margin_right = 130.761
-margin_bottom = 13.4993
-custom_fonts/font = ExtResource( 8 )
-text = "ATARIMAD"
-align = 1
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 96, 7 )
+texture = ExtResource( 8 )
 
 [node name="Facade" type="Sprite" parent="."]
 texture = ExtResource( 9 )

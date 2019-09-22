@@ -1,16 +1,28 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://fonts/game_text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/logo.png" type="Texture" id=2]
 
 [node name="Container" type="Node2D"]
 
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -54.0
+margin_top = -43.0
+margin_right = 54.0
+margin_bottom = 31.0
+color = Color( 0, 0, 0, 0.713726 )
+
 [node name="Label" type="Label" parent="."]
 light_mask = 4097
-margin_left = -30.28
-margin_top = -13.12
-margin_right = 34.72
-margin_bottom = -13.0
+margin_left = -31.28
+margin_top = -31.12
+margin_right = 33.72
+margin_bottom = -4.12
 custom_fonts/font = ExtResource( 1 )
 text = "GOOD GAME
  NEXT PLAYER "
 align = 1
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 0.500687, 16.7841 )
+texture = ExtResource( 2 )
