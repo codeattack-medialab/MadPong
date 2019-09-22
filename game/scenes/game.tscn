@@ -31,7 +31,7 @@ tracks/0/keys = {
 extents = Vector2( 11, 53 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 65.0862, 2.69986 )
+extents = Vector2( 65, 3 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -39,13 +39,14 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 93.7439 ],
 "_edit_vertical_guides_": [ 96.8238 ]
 }
-medialab_facade = "Window"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="Background" type="Sprite" parent="."]
+editor/display_folded = true
+self_modulate = Color( 0.596078, 0.596078, 0.596078, 1 )
 texture = ExtResource( 2 )
 centered = false
 __meta__ = {
@@ -59,23 +60,25 @@ anims/Color = SubResource( 1 )
 [node name="FieldLines" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 centered = false
+offset = Vector2( 1, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Limits" type="Node2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="TopLeft" type="Position2D" parent="Limits"]
-position = Vector2( 35, 41 )
+position = Vector2( 36, 41 )
 
 [node name="BottomRight" type="Position2D" parent="Limits"]
-position = Vector2( 158, 147 )
+position = Vector2( 159, 147 )
 
 [node name="WallLeft" type="StaticBody2D" parent="Limits"]
-position = Vector2( 24, 94 )
+position = Vector2( 25, 94 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -85,7 +88,7 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="WallRight" type="StaticBody2D" parent="Limits"]
-position = Vector2( 169, 94 )
+position = Vector2( 170, 94 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -142,8 +145,9 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="Goal2" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
-position = Vector2( 96, 150 )
+position = Vector2( 97, 150 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -154,7 +158,9 @@ __meta__ = {
 shape = SubResource( 3 )
 
 [node name="Goal1" type="Area2D" parent="."]
-position = Vector2( 96, 38 )
+editor/display_folded = true
+visible = false
+position = Vector2( 97, 38 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -162,7 +168,6 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
-visible = false
 shape = SubResource( 3 )
 
 [node name="FinalTimer" type="Timer" parent="."]
