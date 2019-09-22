@@ -12,9 +12,11 @@ var udp
 var pid
 var dest_ip
 var dest_port
+var splitted_packet_by_id
 
 
-signal joystick #eñal que envía a las raquetas el valo
+signal joystick1 #eñal que envía a las raquetas el valo
+signal joystick2
 
 func _enter_tree():
 	if medialab_facade == "FullScreen":
@@ -72,7 +74,7 @@ func check_finish() -> bool:
 func finish_game():
 	final_box = preload("res://scenes/final.tscn").instance()
 	self.add_child(final_box)
-	final_box.rect_global_position=Vector2(100,100)
+	final_box.set_position(Vector2(95,92))
 	$FinalTimer.start()
 	
 func restart():
@@ -91,7 +93,15 @@ func _process(delta):
 	while udp.get_available_packet_count() > 0:
 		var packet = udp.get_packet().get_string_from_ascii()
 		if packet:
-			emit_signal("joystick",packet)
+			splitted_packet_by_id=packet.split("-",packet, true, 1)
+			match(splitted_packet_by_id[0]):
+				"1":
+					emit_signal("joystick1",packet)
+				"2":
+					emit_signal("joystick2",packet)
+		else:
+			emit_signal("joystick1","continue")
+			emit_signal("joystick2","continue")
 	
 	if (finished and (Input.is_action_just_pressed("p1_left") or Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p1_right") or Input.is_action_just_pressed("p2_right"))):
 		restart()

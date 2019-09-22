@@ -35,6 +35,10 @@ extents = Vector2( 65.0862, 2.69986 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 93.7439 ],
+"_edit_vertical_guides_": [ 96.8238 ]
+}
 medialab_facade = "Window"
 
 [node name="Timer" type="Timer" parent="."]
@@ -163,7 +167,8 @@ shape = SubResource( 3 )
 
 [node name="FinalTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="joystick" from="." to="Racket1" method="_on_Game_joystick" binds= [ "" ]]
+[connection signal="joystick1" from="." to="Racket1" method="_on_Game_joystick"]
+[connection signal="joystick2" from="." to="Racket2" method="_on_Game_joystick"]
 [connection signal="timeout" from="Timer" to="Ball" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Goal2" to="." method="_on_body_entered" binds= [ 2 ]]
 [connection signal="body_entered" from="Goal1" to="." method="_on_body_entered" binds= [ 1 ]]
