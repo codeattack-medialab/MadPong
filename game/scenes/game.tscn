@@ -47,7 +47,6 @@ one_shot = true
 
 [node name="Background" type="Sprite" parent="."]
 editor/display_folded = true
-self_modulate = Color( 0.596078, 0.596078, 0.596078, 1 )
 texture = ExtResource( 2 )
 centered = false
 __meta__ = {
