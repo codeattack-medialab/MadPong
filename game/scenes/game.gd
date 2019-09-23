@@ -9,9 +9,6 @@ var finished := false
 var final_box
 
 var udp
-var pid
-var dest_ip
-var dest_port
 var splitted_packet_by_id
 
 
