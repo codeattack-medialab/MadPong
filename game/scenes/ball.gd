@@ -25,10 +25,10 @@ func start():
 	else:
 		direction = Vector2(0,sign(randi()%2 -0.5)).normalized().rotated(rand_range(-PI/3, PI/3))
 	speed = init_speed
+	$Particles.emitting = false
 
 
 func _physics_process(delta: float):
-	
 	var velocity: Vector2 = direction * speed 
 	speed += aceleration
 	var collision := move_and_collide(velocity * delta)
@@ -46,6 +46,9 @@ func _physics_process(delta: float):
 			direction = direction.bounce(Vector2.RIGHT)
 		elif collision.collider.name.begins_with("Wall"):
 			direction = direction.bounce(Vector2.RIGHT)
+
+	if speed > 120 and not $Particles.emitting:
+		$Particles.emitting = true
 
 
 func _on_Timer_timeout():

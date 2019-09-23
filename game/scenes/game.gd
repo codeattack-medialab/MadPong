@@ -56,6 +56,9 @@ func _on_body_entered(body,extra_arg_0):
 		2:
 			score2+=1
 			$Score2.text= str(score2)
+	if $Ball.speed > 120:
+		$GoalParticles.position = $Ball.position
+		$GoalParticles.emitting = true
 	$Ball.position = $Ball.initial_pos
 	if check_finish():
 		finish_game()
