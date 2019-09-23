@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/game.gd" type="Script" id=1]
 [ext_resource path="res://textures/game_background.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://fonts/big_score_numbers.tres" type="DynamicFont" id=7]
 [ext_resource path="res://textures/logo_small.png" type="Texture" id=8]
 [ext_resource path="res://textures/mlp_facade.png" type="Texture" id=9]
+[ext_resource path="res://music/game.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Color"
@@ -36,8 +37,8 @@ extents = Vector2( 65, 3 )
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 93.7439 ],
-"_edit_vertical_guides_": [ 96.8238 ]
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
 }
 
 [node name="Timer" type="Timer" parent="."]
@@ -167,6 +168,10 @@ shape = SubResource( 3 )
 
 [node name="FinalTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 [connection signal="joystick1" from="." to="Racket1" method="_on_Game_joystick"]
 [connection signal="joystick2" from="." to="Racket2" method="_on_Game_joystick"]
 [connection signal="timeout" from="Timer" to="Ball" method="_on_Timer_timeout"]
