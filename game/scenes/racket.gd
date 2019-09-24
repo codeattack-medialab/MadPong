@@ -14,6 +14,7 @@ var command_joystick
 var state = 0
 
 var lost_packets := 0
+var stop_movement := false
 
 func set_field_limits(field_left: int, field_right: int):
 	var half_racket_length: int = $CollisionShape2D.shape.extents.x
@@ -43,16 +44,11 @@ func _on_Game_joystick(value):
 		cadena = value.split("-")
 		cantidad = float(cadena[1])
 		command_joystick = cadena[0]
-	
-	elif lost_packets > 30: #Sube cada frame que no hay paquete, así que a los 30 frames (medio segundo) la raqueta se para.
+		$Timer.stop()
+		$Timer.start()
+	elif stop_movement:
 		cantidad = 0
-		lost_packets = 0
-	else:
-		lost_packets += 1  #La raqueta se queda igual pero subue el contador de paquete perdido.
-#	if value.begins_with("Left-"):
-#		sense= -1
-#	else:
-#		sense= +1
+		stop_movement = false
 
 func update_state():
 	if ((cantidad>0)):
@@ -64,3 +60,7 @@ func update_state():
 			state= 0
 	else:
 		state = 0
+
+
+func _on_Timer_timeout():
+	stop_movement= true
