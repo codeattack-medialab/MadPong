@@ -45,9 +45,9 @@ func _on_Game_joystick(value):
 		$Timer.stop()
 		$Timer.start()
 	elif stop_movement:
-		state = 0
+		state = 0.0
 		stop_movement = false
-
+		print("para")
 #func update_state():
 #	if ((cantidad>0)):
 #		if(command_joystick =="Left"):
@@ -62,3 +62,5 @@ func _on_Game_joystick(value):
 
 func _on_Timer_timeout():
 	stop_movement= true
+	print("time")
+	

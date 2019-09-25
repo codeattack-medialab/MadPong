@@ -42,7 +42,7 @@ func _ready():
 	if err != OK:
 		print("error al conectarse al puerto 33333")
 	else:
-		print("oko")
+		print("Conectado satisfactoriamente")
 		
 		
 	
@@ -93,16 +93,19 @@ func _process(delta):
 	while udp.get_available_packet_count() > 0:
 		var packet = udp.get_packet().get_string_from_ascii()
 		if packet:
+			print("Ok")
 			splitted_packet_by_id=packet.split("/")
 			match(splitted_packet_by_id[0]): #Esto igual se puede hacer interpolando el string emit_signal(emit_signal("joystick%s" % splitted_packet_by_id[0] ,splitted_packet_by_id[2]) en vez del match, para una cantidad arbitraria de mandoos (no sé si es %s, debería de mirarlo)
 				"1":
 					emit_signal("joystick1",splitted_packet_by_id[2])
 				"2":
 					emit_signal("joystick2",splitted_packet_by_id[2])
-		else:
-			emit_signal("joystick1","continue")
-			emit_signal("joystick2","continue")
-	
+#		else:
+#			emit_signal("joystick1","continue")
+#			emit_signal("joystick2","continue")
+	if udp.get_available_packet_count() == 0:
+		emit_signal("joystick1","continue")
+		emit_signal("joystick2","continue")
 	if (finished and (Input.is_action_just_pressed("p1_left") or Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p1_right") or Input.is_action_just_pressed("p2_right"))):
 		restart()
 		
