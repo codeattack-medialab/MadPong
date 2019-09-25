@@ -23,7 +23,6 @@ func set_field_limits(field_left: int, field_right: int):
 
 func _physics_process(delta: float):
 	new_position = position.x
-	
 	new_position += state * speed * delta
 	if Input.is_action_pressed("p%d_left" % player):
 		new_position -= speed * delta

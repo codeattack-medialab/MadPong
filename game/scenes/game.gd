@@ -94,11 +94,11 @@ func _process(delta):
 		var packet = udp.get_packet().get_string_from_ascii()
 		if packet:
 			splitted_packet_by_id=packet.split("-",packet, true, 1)
-			match(splitted_packet_by_id[0]):
+			match(splitted_packet_by_id[0]): #Esto igual se puede hacer interpolando el string
 				"1":
-					emit_signal("joystick1",packet)
+					emit_signal("joystick1",splitted_packet_by_id[1])
 				"2":
-					emit_signal("joystick2",packet)
+					emit_signal("joystick2",splitted_packet_by_id[1])
 		else:
 			emit_signal("joystick1","continue")
 			emit_signal("joystick2","continue")
