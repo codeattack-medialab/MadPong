@@ -90,6 +90,9 @@ func _final_Timer_timeout():
 	finished=true
 	
 func _process(delta):
+	if udp.get_available_packet_count() == 0:
+		emit_signal("joystick1","continue")
+		emit_signal("joystick2","continue")
 	while udp.get_available_packet_count() > 0:
 		var packet = udp.get_packet().get_string_from_ascii()
 		if packet:
@@ -103,9 +106,7 @@ func _process(delta):
 #		else:
 #			emit_signal("joystick1","continue")
 #			emit_signal("joystick2","continue")
-	if udp.get_available_packet_count() == 0:
-		emit_signal("joystick1","continue")
-		emit_signal("joystick2","continue")
+	
 	if (finished and (Input.is_action_just_pressed("p1_left") or Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p1_right") or Input.is_action_just_pressed("p2_right"))):
 		restart()
 		
