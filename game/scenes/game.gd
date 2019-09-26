@@ -99,13 +99,16 @@ func _process(delta):
 		if packet:
 #			print(packet)
 			splitted_packet_by_id=packet.split("/")
+			print("tipo",splitted_packet_by_id[1]=="Click")
+			print("valor:",splitted_packet_by_id[1])
+			
 			if (splitted_packet_by_id[1] == "X"):
 				match(splitted_packet_by_id[0]): #Esto igual se puede hacer interpolando el string emit_signal(emit_signal("joystick%s" % splitted_packet_by_id[0] ,splitted_packet_by_id[2]) en vez del match, para una cantidad arbitraria de mandoos (no sé si es %s, debería de mirarlo)
 					"1":
 						emit_signal("joystick1",splitted_packet_by_id[2])
 					"2":
 						emit_signal("joystick2",splitted_packet_by_id[2])
-			elif((splitted_packet_by_id[1] == "Click") and (finished) and splitted_packet_by_id[2] == 1):
+			elif((splitted_packet_by_id[1] == "Click") and (finished) and splitted_packet_by_id[2] == "1.00"):
 				restart()
 #		else:
 #			emit_signal("joystick1","continue")
