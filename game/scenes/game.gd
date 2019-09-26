@@ -93,6 +93,7 @@ func _process(delta):
 	if udp.get_available_packet_count() == 0:
 		emit_signal("joystick1","continue")
 		emit_signal("joystick2","continue")
+		
 	while udp.get_available_packet_count() > 0:
 		var packet = udp.get_packet().get_string_from_ascii()
 		if packet:
