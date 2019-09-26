@@ -97,17 +97,20 @@ func _process(delta):
 	while udp.get_available_packet_count() > 0:
 		var packet = udp.get_packet().get_string_from_ascii()
 		if packet:
-			print("Ok")
+#			print(packet)
 			splitted_packet_by_id=packet.split("/")
-			match(splitted_packet_by_id[0]): #Esto igual se puede hacer interpolando el string emit_signal(emit_signal("joystick%s" % splitted_packet_by_id[0] ,splitted_packet_by_id[2]) en vez del match, para una cantidad arbitraria de mandoos (no sé si es %s, debería de mirarlo)
-				"1":
-					emit_signal("joystick1",splitted_packet_by_id[2])
-				"2":
-					emit_signal("joystick2",splitted_packet_by_id[2])
+			if (splitted_packet_by_id[1] == "X"):
+				match(splitted_packet_by_id[0]): #Esto igual se puede hacer interpolando el string emit_signal(emit_signal("joystick%s" % splitted_packet_by_id[0] ,splitted_packet_by_id[2]) en vez del match, para una cantidad arbitraria de mandoos (no sé si es %s, debería de mirarlo)
+					"1":
+						emit_signal("joystick1",splitted_packet_by_id[2])
+					"2":
+						emit_signal("joystick2",splitted_packet_by_id[2])
+			elif((splitted_packet_by_id[1] == "Click") and (finished) and splitted_packet_by_id[2] == 1):
+				restart()
 #		else:
 #			emit_signal("joystick1","continue")
 #			emit_signal("joystick2","continue")
 	
 	if (finished and (Input.is_action_just_pressed("p1_left") or Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p1_right") or Input.is_action_just_pressed("p2_right"))):
 		restart()
-		
+	
