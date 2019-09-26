@@ -174,6 +174,7 @@ one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+autoplay = true
 
 [node name="GoalParticles" type="CPUParticles2D" parent="."]
 emitting = false
