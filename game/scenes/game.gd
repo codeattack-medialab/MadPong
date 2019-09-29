@@ -16,13 +16,19 @@ signal joystick1 #eñal que envía a las raquetas el valo
 signal joystick2
 
 func _enter_tree():
+	var window_offset := Vector2(40, 40)
+	if medialab_facade == "FullScreen" or medialab_facade == "Window":
+		var screen_size := OS.get_screen_size()
+		if screen_size == Vector2(1280, 1024):
+			window_offset = Vector2(163, 142)
+
 	if medialab_facade == "FullScreen":
 		var viewport_size = Vector2(192+40, 157+40)
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED, SceneTree.STRETCH_ASPECT_KEEP, viewport_size, 1)
-		position = Vector2(40, 40)
+		position = window_offset
 		OS.window_fullscreen = true
 	elif medialab_facade == "Window":
-		OS.window_position = Vector2(40, 40)
+		OS.window_position = window_offset
 	elif medialab_facade == "No":
 		OS.window_fullscreen = true
 
