@@ -114,7 +114,7 @@ func _process(delta):
 						emit_signal("joystick1",splitted_packet_by_id[2])
 					"2":
 						emit_signal("joystick2",splitted_packet_by_id[2])
-			elif((splitted_packet_by_id[1] == "Click") and (finished) and splitted_packet_by_id[2] == "1.00"):
+			elif((splitted_packet_by_id[1] == "Click") and (finished) and (splitted_packet_by_id[2] == "1.00" or splitted_packet_by_id[2] == "2.00")):
 				restart()
 #		else:
 #			emit_signal("joystick1","continue")
