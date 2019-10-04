@@ -44,7 +44,7 @@ func _ready():
 	
 	#UDP
 	udp = PacketPeerUDP.new()
-	var err = udp.listen(33333, "127.0.0.1")
+	var err = udp.listen(33333, "192.168.200.102") #127.0.0.1
 	if err != OK:
 		print("error al conectarse al puerto 33333")
 	else:
@@ -105,8 +105,8 @@ func _process(delta):
 		if packet:
 #			print(packet)
 			splitted_packet_by_id=packet.split("/")
-			print("tipo",splitted_packet_by_id[1]=="Click")
-			print("valor:",splitted_packet_by_id[1])
+			print("tipo",splitted_packet_by_id[1])
+			print("valor:",splitted_packet_by_id[2])
 			
 			if (splitted_packet_by_id[1] == "X"):
 				match(splitted_packet_by_id[0]): #Esto igual se puede hacer interpolando el string emit_signal(emit_signal("joystick%s" % splitted_packet_by_id[0] ,splitted_packet_by_id[2]) en vez del match, para una cantidad arbitraria de mandoos (no sé si es %s, debería de mirarlo)
@@ -114,7 +114,7 @@ func _process(delta):
 						emit_signal("joystick1",splitted_packet_by_id[2])
 					"2":
 						emit_signal("joystick2",splitted_packet_by_id[2])
-			elif((splitted_packet_by_id[1] == "Click") and (finished) and (splitted_packet_by_id[2] == "1.00" or splitted_packet_by_id[2] == "2.00")):
+			elif((splitted_packet_by_id[1] == "Click") and (finished) and (splitted_packet_by_id[2] == "1.0" or splitted_packet_by_id[2] == "2.0")):
 				restart()
 #		else:
 #			emit_signal("joystick1","continue")
