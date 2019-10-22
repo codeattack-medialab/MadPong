@@ -28,15 +28,10 @@ func _physics_process(delta: float):
 		new_position -= speed * delta
 	if Input.is_action_pressed("p%d_right" % player):
 		new_position += speed * delta
-		
-#	update_state()
-	
+
 	if new_position != position.x:
 		new_position = clamp(new_position, limit_left, limit_right)
-		var movement = new_position - position.x
-# warning-ignore:return_value_discarded
-		move_and_collide(Vector2(movement, 0))
-	
+		position.x = new_position
 
 
 func _on_Game_joystick(value):

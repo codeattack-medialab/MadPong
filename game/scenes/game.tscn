@@ -43,7 +43,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ],
 "_edit_vertical_guides_": [  ]
 }
-medialab_facade = "Window"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -70,7 +69,6 @@ __meta__ = {
 }
 
 [node name="Limits" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -103,11 +101,9 @@ shape = SubResource( 2 )
 
 [node name="Racket1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 74, 45 )
-motion/sync_to_physics = false
 
 [node name="Racket2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 115, 143 )
-motion/sync_to_physics = false
 
 [node name="Ball" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 94 )
@@ -174,7 +170,6 @@ one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-autoplay = true
 
 [node name="GoalParticles" type="CPUParticles2D" parent="."]
 emitting = false
