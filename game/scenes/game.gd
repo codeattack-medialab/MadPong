@@ -44,7 +44,7 @@ func _ready():
 	
 	#UDP
 	udp = PacketPeerUDP.new()
-	var err = udp.listen(33333, "192.168.200.102") #127.0.0.1
+	var err = udp.listen(33333, "0.0.0.0")
 	if err != OK:
 		print("error al conectarse al puerto 33333")
 	else:
